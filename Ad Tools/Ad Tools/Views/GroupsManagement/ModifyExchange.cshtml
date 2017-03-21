@@ -1,0 +1,112 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model GroupExchangeModel
+
+
+@{
+    ViewBag.Title = "ExchangeModify";
+   
+}
+<div class="widget">
+    <div class="title">
+        <h4>Search/Modify</h4>
+    </div>
+    <div class="titlebar">Search/Modify</div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+
+    <div style="margin-top:25px">
+        <div>
+            <table id="adtable" class="adtable">
+                <tbody>
+                    <tr class="firstrow">
+                        <td width="40%"><label class="textlabel" >DL Shortname</label></td>
+                        <td width="60%">
+                            @Html.TextBox("DLShortname", Model.DLShortname, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td><label class="textlabel" >GroupName</label></td>
+                        <td>
+                            @Html.TextBox("GroupName", Model.GroupName, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Email</label></td>
+                        <td>
+                            @Html.TextBox("Emailname", Model.Emailname, htmlAttributes: new { @class = "input" })
+                            @Html.DropDownList("EmailHost", Model.EmailHost, htmlAttributes: new { @class = "input" })
+                            <label style="float:left;margin-left:0px;"></label>
+                            
+                        </td>
+                    </tr>
+                     <tr>
+                        <td><label class="textlabel">Managed By</label></td>
+                        <td>
+                         @Html.ListBox("managedByList", Model.managedByList, htmlAttributes: new { @class = "input" })
+                            <input type="submit" class="btn" value="Add" style="float:left;margin-left:5px;margin-bottom:5px;"><input type="submit" class="btn" value="Delete" style="float:left;margin-left:5px;margin-bottom:5px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Senders Allowed List</label></td>
+                        <td>
+                            @Html.ListBox("SendersAllowedList", Model.SendersAllowedList, htmlAttributes: new { @class = "input" })
+                            <input type="submit" class="btn" value="Add" style="float:left;margin-left:5px;margin-bottom:5px;"><input type="submit" class="btn" value="Delete" style="float:left;margin-left:5px;margin-bottom:5px;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" >Display Name</label></td>
+                        <td>
+                          @Html.TextBox("DisplayName", Model.DisplayName, htmlAttributes: new { @class = "input" })
+                            <input name="button2" type="button" class="btn" value="Generate" style="margin-left:10px;float:left;visibility:hidden">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" >Description</label></td>
+                        <td>
+                            @Html.TextBox("Description", Model.Description, htmlAttributes: new { @class = "input" })
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Valid From</label></td>
+                        <td>@Html.TextBox("ValidFrom", Model.ValidFrom, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Valid until</label></td>
+                        <td>@Html.TextBox("ValidUntil", Model.ValidUntil, htmlAttributes: new { @class = "input" })</td>
+                    </tr><tr>
+    <td><label class="textlabel">Require Sender Authentication POP3</label></td>
+    <td>
+        @Html.CheckBox("RequireSenderAuthenticationEnabled", Model.RequireSenderAuthenticationEnabled, htmlAttributes: new { @class = "input" })
+</td>
+</tr>
+<tr>
+    <td><label class="textlabel">Hide from AB</label></td>
+    <td>@Html.CheckBox("HideFromAB", Model.HideFromAB, htmlAttributes: new { @class = "input" })</td>
+</tr>
+<tr>
+    <td><label class="textlabel">Indude in Galsync</label></td>
+    <td>
+        @Html.CheckBox("IndudeinGalsync", Model.IndudeinGalsync, htmlAttributes: new { @class = "input" })
+    </td>
+</tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:25px">
+            <center>
+                <input type="submit" class="btn" value="Save" style="width:100px" onclick="Group_Exchange_Modify()">
+             
+                <input type="submit" class="btn" value="Cancle" style="width:100px">
+            </center>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model ExchangeModel
+@{
+    ViewBag.Title = "ExchangeModify";
+   
+}
+<div class="widget">
+    <div class="title">
+        <h4>Search/Modify</h4>
+    </div>
+    <div class="titlebar">Search/Modify</div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+
+    <div style="margin-top:25px">
+        <div>
+            <table id="adtable" class="adtable">
+                <tbody>
+                    <tr class="firstrow">
+                        <td width="40%"><label class="textlabel" style="color:#C12427">Account Type</label></td>
+                        <td width="60%">
+                           @Html.TextBox("AccountType", Model.AccountType, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td><label class="textlabel" style="color:#C12427">Exchange Datacenter</label></td>
+                        <td>
+                            @Html.TextBox("DataCenter", Model.DataCenter, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Database</label></td>
+                        <td>
+                            @Html.DropDownList("Database", Model.Database, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Email Address</label></td>
+                        <td>
+                            @Html.TextBox("EmailAddress", Model.EmailAddress, htmlAttributes: new { @class = "input" })
+                            <label style="float:left;margin-left:0px;"></label>
+                            @Html.DropDownList("EAitem", Model.EAitem, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Display Name</label></td>
+                        <td>
+                          @Html.TextBox("DisplayName", Model.DisplayName, htmlAttributes: new { @class = "input" })
+                            <input name="button2" type="button" class="btn" value="Generate" style="margin-left:10px;float:left;visibility:hidden">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Linked Account</label></td>
+                        <td>
+                            @Html.TextBox("LinkedAccountdomain", Model.LinkedAccountdomain, htmlAttributes: new { @class = "input" })
+                            @Html.TextBox("LinkedAccount", Model.LinkedAccountname, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">SendAs Delegates</label></td>
+                        <td>@Html.TextBox("SendAsDelegates", Model.SendAsDelegates, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">FMA Delegates</label></td>
+                        <td>@Html.TextBox("FMADelegates", Model.FMADelegates, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Emailbox quotas</label></td>
+                        <td>
+                            @Html.DropDownList("QuotaPlan", Model.QuotaPlan, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Blackberry enabled</label></td>
+                        <td>@Html.CheckBox("BlackBerryEnabled", Model.BlackBerryEnabled, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Enable IMAP</label></td>
+                        <td>@Html.CheckBox("IMAPEnabled", Model.IMAPEnabled, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Enable POP3</label></td>
+                        <td>@Html.CheckBox("POP3Enabled",Model.POP3Enabled, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Hide from OAB</label></td>
+                        <td>@Html.CheckBox("HideFromOAB", Model.HideFromOAB, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">ActiveSync Policy</label></td>
+                        <td>
+                            @Html.DropDownList("MailboxPolicys", Model.MailboxPolicys, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Restricted usage</label></td>
+                        <td>@Html.CheckBox("RestrictedUsage", Model.RestrictedUsage, htmlAttributes: new { @class = "input" })</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table id="adtable" class="adtable">
+                <tbody>
+                    <tr class="firstrow">
+                        <td width="40%"><label class="textlabel"> Senders allowed list</label></td>
+                        <td>
+                            <textarea name="MSG" cols="40" rows="4" style="margin-left:10px;float:left;width:30%"></textarea>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:25px">
+            <center>
+                <input type="submit" class="btn" value="Modify" style="width:100px" onclick="User_Exchange_Modify()">
+             
+                <input type="submit" class="btn" value="Clear" style="width:100px">
+            </center>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

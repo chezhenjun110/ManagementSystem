@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AD-Tools</title>
+    @Styles.Render("~/Scripts/adtools/bootstrap.min.css")
+    @Styles.Render("~/Scripts/adtools/font-awesome.min.css")
+    @Styles.Render("~/Scripts/adtools/main.css")
+    @Styles.Render("~/Scripts/adtools/navigator.css")
+    @Styles.Render("~/Scripts/adtools/content.css")
+    @Styles.Render("~/Scripts/adtools/jquery.dataTables.min.css")
+    @Styles.Render("~/Scripts/adtools/easyui/icon.css")
+    @Styles.Render("~/Scripts/adtools/easyui/easyui.css")
+   
+</head>
+<body>
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <!-- TOP BAR -->
+        <div class="top-bar"> </div>
+        <!-- /top -->
+        <!-- BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT -->
+        <div class="bottom">
+            <div class="container">
+                <div class="row">
+
+                    <!-- left sidebar -->
+                    <div class="col-md-2 left-sidebar">
+                        <div class="imglogo"> <a href="#"> <img src="~/kingadmin-logo.png" /> </a> </div>
+                        <!-- main-nav -->
+                        <nav class="main-nav">
+                            <ul class="main-menu" style="padding:0px 5px 400px 5px">
+                                <!-- right已改 -->
+                                <li class="" style="border-radius:7px 7px 7px 7px;border:1px solid #BEDAEE;">
+                                    <a href="~/#" class="js-sub-menu-toggle"> <em class="toggle-icon fa fa-angle-right"></em> <em class="fa fa-clipboard fa-fw"></em> <span class="text">Dashboard</span> </a>
+                                    <ul class="sub-menu " style="height:auto;border-radius:0px 0px 7px 7px">
+                                        <li> <a id="1" href="~/Dashboard/ActivityandLog"> <em class="toggle-icon fa fa-angle-right"></em> <span class="text">Activity and Log</span> </a> </li>
+                                        <li style="height:auto;border-radius:0px 0px 7px 7px"> <a id="2" href="~/Dashboard/SystemHealthy" style="height:auto;border-radius:0px 0px 7px 7px"> <em class="toggle-icon fa fa-angle-right"></em> <span class="text">System Healthy</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li style="border-radius:7px 7px 7px 7px;border:1px solid #BEDAEE;">
+                                    <a href="~/#" class="js-sub-menu-toggle"> <i class="toggle-icon fa fa-angle-right"></i> <i class="fa fa-bar-chart-o fw"></i> <span class="text">User Management</span> </a>
+                                    <ul class="sub-menu " style="height:auto;border-radius:0px 0px 7px 7px">
+                                        <li> <a id="3" href="~/UserManagement/Report"> <em class="toggle-icon fa fa-angle-right"></em> <span class="text">Report</span> </a> </li>
+                                        <li> <a id="4" href="~/UserManagement/SearchModify"> <em class="toggle-icon fa fa-angle-right"></em> <span class="text">Search/Modify</span> </a> </li>
+                                        <li style="height:auto;border-radius:0px 0px 7px 7px"> <a id="5" href="~/UserManagement/Create" style="height:auto;border-radius:0px 0px 7px 7px"> <em class="toggle-icon fa fa-angle-right"></em> <span class="text">Create</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li style="border-radius:7px 7px 7px 7px;border:1px solid #BEDAEE;">
+                                    <a href="~/#" class="js-sub-menu-toggle"> <i class="toggle-icon fa fa-angle-right"></i> <i class="fa fa-edit fw"></i> <span class="text">Groups Management</span> </a>
+                                    <ul class="sub-menu " style="height:auto;border-radius:0px 0px 7px 7px">
+                                        <li> <a id="6" href="~/GroupsManagement/Report"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Report</span> </a> </li>
+                                        <li> <a id="7" href="~/GroupsManagement/SearchModify"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Search/Modify</span> </a> </li>
+                                        <li> <a id="8" href="~/GroupsManagement/AuthorityManagement"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">AuthorityManagement</span> </a> </li>
+                                        <li style="height:auto;border-radius:0px 0px 7px 7px"> <a id="9" href="~/GroupsManagement/Create" style="height:auto;border-radius:0px 0px 7px 7px"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Create</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li style="border-radius:7px 7px 7px 7px;border:1px solid #BEDAEE;">
+                                    <a href="~/#" class="js-sub-menu-toggle"> <i class="toggle-icon fa fa-angle-right"></i> <i class="fa fa-list-alt fw"></i> <span class="text">Computer Management</span> </a>
+                                    <ul class="sub-menu " style="height:auto;border-radius:0px 0px 7px 7px">
+                                        <li> <a id="10" href="~/ComputerManagement/Report"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Report</span> </a> </li>
+                                        <li> <a id="11" href="~/ComputerManagement/SearchModify"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Search/Modify</span> </a> </li>
+                                        <li style="height:auto;border-radius:0px 0px 7px 7px;visibility:hidden"> <a id="12" href="~/ComputerManagement/Create" style="height:auto;border-radius:0px 0px 7px 7px"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Create</span> </a> </li>
+                                    </ul>
+                                </li>
+                                <li style="border-radius:7px 7px 7px 7px;border:1px solid #BEDAEE;">
+                                    <a href="~/#" class="js-sub-menu-toggle"> <i class="toggle-icon fa fa-angle-right"></i> <i class="fa fa-list-alt fw"></i> <span class="text">UC Management</span> </a>
+                                    <ul class="sub-menu " style="height:auto;border-radius:0px 0px 7px 7px">                     
+                                        <li style="height:auto;border-radius:0px 0px 7px 7px"> <a id="13" href="~/ExchangeManagement/SearchModify"><em class="toggle-icon fa fa-angle-right"></em> <span class="text">Exchange Enable/Disable</span> </a>  </li>
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                      
+                    </div>
+                   
+                    <div class="col-md-10 content-wrapper">
+                        <div class="row line">
+                            <div class="col-lg-4 ">
+                                <ul class="breadcrumb">
+                                    <li class="first"><span></span><a href="~/#">Dashboard</a></li><li class="active"><span></span>ActivityandLog</li>
+                                </ul>
+                                @Html.Partial("_LoginPartial")
+                               
+                            </div>
+                        </div>
+                        <div class="message row">
+                            <p style="margin-right:15px;float:right;margin-bottom:0;margin-top:0;visibility:hidden" >All Requests:<span id="one">0</span>&nbsp;&nbsp;&nbsp;Pending Requests:<span id="two">0</span>&nbsp;&nbsp;&nbsp;Success Requests:<span id="three">0</span>&nbsp;&nbsp;&nbsp;Failed Request:<span id="four">0</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-10 main-content">
+                        @RenderBody()
+                        
+                    </div>
+                   
+                </div>
+              
+            </div>
+           
+        </div>
+     
+    </div>
+    <footer class="footer">&copy; 2016 The Develovers</footer>
+    @Scripts.Render("~/Scripts/adtools/jquery-2.1.0.min.js")
+    @Scripts.Render("~/Scripts/adtools/bootstrap.js")
+    
+    @Scripts.Render("~/Scripts/adtools/easyui/jquery.easyui.min.js")
+    @Scripts.Render("~/Scripts/adtools/jquery.dataTables.min.js")
+    @Scripts.Render("~/Scripts/adtools/adtools.js")
+    @Scripts.Render("~/Scripts/adtools/Dashboard.js")
+    @Scripts.Render("~/Scripts/adtools/User.js")
+    @Scripts.Render("~/Scripts/adtools/Computer.js")
+    @Scripts.Render("~/Scripts/adtools/Group.js")
+    @Scripts.Render("~/Scripts/adtools/Exchange.js")
+
+    @Scripts.Render("~/Scripts/adtools/modernizr.js")
+    @Scripts.Render("~/Scripts/adtools/king-common.js")
+    @Scripts.Render("~/Scripts/adtools/jquery.cookie.js")
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>

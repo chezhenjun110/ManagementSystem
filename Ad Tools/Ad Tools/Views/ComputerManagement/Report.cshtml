@@ -1,0 +1,37 @@
+﻿@using Ad_Tools.Models
+@model ComputerDetailModel
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="widget">
+    <div class="title">
+        <h4>Computer Report</h4>
+    </div>
+    <div class="titlebar">Computer Report</div>
+    <div id="tablespace" style="margin-top:25px;">
+        <table id="example" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>computer</th>
+                    <th>CreateTime</th>
+                    <th>CreateBy</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.computerdetail)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.name</td>
+                        <td>@item.CreateTime</td>
+                        <td>@item.Createby</td>
+                      </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

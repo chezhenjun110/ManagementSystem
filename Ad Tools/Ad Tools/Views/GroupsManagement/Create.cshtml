@@ -1,0 +1,60 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model GroupCreateViewModels
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="widget">
+    <div class="title">
+        <h4>Create Group</h4>
+    </div>
+    <div class="titlebar">Create Group<span id="ChoosedOu" style="visibility:hidden"></span></div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+    <div>
+        <table id="adtable" class="adtable">
+            <tbody>
+                <tr class="firstrow">
+                    <td width="50%"><label class="textlabel" style="color:#C92023">AD Name</label></td>
+                    <td width="50%">
+                        @Html.DropDownList("domain", Model.domains, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+                <tr class="secondrow">
+                    <td><label class="textlabel" style="color:#C92023">OU</label></td>
+                    <td><div style="width:50%;margin-left:10px;float:left"><input id="combotree" style="width:100%"></div></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Group Name</label></td>
+                    <td><input class="input" id="groupname" onpropertychange="Createchange()" oninput="Createchange()" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel">Group Scope</label></td>
+                    <td><input  id="DomainLocale" type="radio" style="float:left" name="groupscope"><label class="label1" style="float:left">Domain Locale</label>
+                    <input  id="Gloable" type="radio" style="float:left" name="groupscope" checked ><label class="label1" style="float:left">Gloable</label>
+                    <input  id="Universal" type="radio" style="float:left" name="groupscope" ><label class="label1" style="float:left">Universal</label></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Group Type</label></td>
+                    <td><input  id="Security" type="radio" style="float:left" name="grouptype" checked><label class="label1" style="float:left">Security</label>
+                    <input  id="Distribution" type="radio" style="float:left" name="grouptype"><label class="label1" style="float:left">Distribution</label></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Enable Exchange</label></td>
+                    <td><input  id="EnableExchange" style="float:left"  type="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+        <center style="margin-top:25px">
+            <input  type="submit" class="btn" value="Create" style="text-align:center;" onclick="Group_create()">
+            <input id="Create_Cancle"  type="reset" disabled class="btn" value="Clear" style="text-align:center;" onclick="Group_create_clear()">
+        </center>
+
+
+    </div>
+
+</div>
+
+
+

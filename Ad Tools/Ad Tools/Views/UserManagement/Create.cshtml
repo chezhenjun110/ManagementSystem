@@ -1,0 +1,142 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model UserCreateModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="widget">
+    <div class="title">
+        <h4>Create User</h4>
+    </div>
+    <div class="titlebar">Create User<span id="ChoosedOu" style="visibility:hidden"></span></div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+
+
+    <div>
+        <table id="adtable" class="adtable">
+            <tbody>
+                <tr class="firstrow">
+                    <td width="40%"><label class="textlabel" style="color:#C92023">User Principle Name</label></td>
+                    <td width="60%">
+                        <input class="input" id="userlogonname" type="text" onpropertychange="Createchange()" oninput="Createchange()">
+                        @Html.DropDownList("Userdomain", Model.domains, htmlAttributes: new { @class = "input" })
+                    </td>
+
+                </tr>
+                <tr class="secondrow">
+                    <td><label class="textlabel" style="color:#C92023">OU</label></td>
+                    <td><div style="width:50%;margin-left:10px;float:left"><input id="combotree" style="width:100%"></div></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >User Type</label></td>
+                    <td>
+                        @Html.DropDownList("searchfield", Model.accounttype, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel">Email Address</label></td>
+                    <td><input class="input" id="email" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >ManageBy</label></td>
+                    <td><input class="input" id="ManageBy" onpropertychange="Createchange()" oninput="Createchange()" type="text" /><input type="submit" class="btn" value="Verify" style="text-align:center;margin-left:5px;float:left" onclick="User_create_manager()"></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >User Title</label></td>
+                    <td><input class="input" id="usertitle" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">First Name</label></td>
+                    <td><input class="input" id="firstname" onpropertychange="Createchange_firstname(this)" oninput="Createchange_firstname(this)" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Last Name</label></td>
+                    <td><input class="input" id="lastname" onpropertychange="Createchange_lastname(this)" oninput="Createchange_lastname(this)" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel">Full Name</label></td>
+                    <td>
+                        <input class="input" id="fullname" onpropertychange="Createchange()" oninput="Createchange()" type="text" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Password</label></td>
+                    <td>
+                        <label id="passmess" style="color:red;margin-left:10px;"></label>
+                        <input class="input" id="password" type="text" onblur="checkPass()" onfocus="clearPass()" />
+                        <input type="submit" class="btn" value="GENERATE" style="text-align:center;margin-left:5px;float:left" onclick="RandomPass()">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" style="color:#C92023">Confirm Password</label></td>
+                    <td>
+                        <label id="passwordremind" style="color:red;margin-left:10px;"></label>
+                        <input class="input" id="confirmpassword" type="text" onblur="confirmpassword()" onfocus="clearremind()" />
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >Account Lock time</label></td>
+                    <td><input class="input" id="AccountLockouttime" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                <tr>
+                    <td><label class="textlabel" >Office phone</label></td>
+                    <td><input class="input" id="officephone" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >Department</label></td>
+                    <td><input class="input" id="Department" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >Company</label></td>
+                    <td><input class="input" id="Company" onpropertychange="Createchange()" oninput="Createchange()" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel">EmployeeID</label></td>
+                    <td><input class="input" id="EmployeeID" onpropertychange="Createchange()" oninput="Createchange()" type="text"  /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >Office</label></td>
+                    <td><input class="input" id="Office" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+               
+                <tr>
+                    <td><label class="textlabel" >Country</label></td>
+                    <td><input class="input" id="Country" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >City</label></td>
+                    <td><input class="input" id="City" onpropertychange="Createchange()" oninput="Createchange()" type="text" /></td>
+                </tr>
+               
+                <tr>
+                    <td><label class="textlabel" >User must change password at next logon</label></td>
+                    <td>
+                        <input id="umcpanl" class="adcheckbox" checked type="checkbox" onclick="checkbox1()" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >User canot change password</label></td>
+                    <td><input id="uccp" class="adcheckbox" type="checkbox" onclick="checkbox2()" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel" >Password never expires</label></td>
+                    <td><input id="pne" class="adcheckbox" type="checkbox" onclick="checkbox2()" /></td>
+                </tr>
+                <tr>
+                    <td><label class="textlabel">Account is disabled</label></td>
+                    <td><input id="aid" class="adcheckbox" type="checkbox" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <center style="margin-top:25px">
+            <input type="submit" class="btn" value="Create" style="text-align:center;" onclick="User_Create()">
+            <input id="Create_Cancle" type="submit" class="btn" value="Clear" disabled style="text-align:center;" onclick="User_Cancle()">
+        </center>
+        <div id="hidekey" style="visibility:hidden"></div>
+    </div>
+</div>

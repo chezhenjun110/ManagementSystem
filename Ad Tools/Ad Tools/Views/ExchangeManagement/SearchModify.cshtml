@@ -1,0 +1,183 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model  UserSearchModifyViewModel
+@{
+    ViewBag.Title = "SearchModify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="widget">
+    <div class="title">
+        <h4>Search/Modify</h4>
+    </div>
+    <div class="titlebar">Search/Modify</div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+    <div>
+        <table id="adtable" class="adtable">
+            <tbody>
+                <tr class="firstrow">
+                    <td width="40%">
+                        <label class="textlabel">AD Name</label>
+                    </td>
+                    <td width="60%">
+                        @Html.DropDownList("domain", Model.domains, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+                <tr class="secondrow">
+                    <td width="40%">
+                        <label class="textlabel">Search Field</label>
+                    </td>
+                    <td width="60%">
+                        @Html.DropDownList("searchfield", Model.searchfield, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%">
+                        <label class="textlabel">Search Criteria</label>
+                    </td>
+                    <td width="60%">
+                        @Html.DropDownList("searchcriteria", Model.searchcriteria, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%">
+                        <label class="textlabel">Search Keyword</label>
+                    </td>
+                    <td width="60%">
+                        <input class="input" type="text" id="searchkeyword"  onkeydown="Exchange_EnterSearch()" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td width="40%">
+                        <label class="textlabel">Search Type</label>
+                    </td>
+                    <td width="60%">
+                        @Html.DropDownList("searchtype", Model.searchtype, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <center style="margin-top:25px">
+            <input type="submit" class="btn" value="Search" style="text-align:center;" onclick="Exchange_Search()">
+            <input  type="submit" class="btn" value="Clear" style="text-align:center;">
+        </center>
+    </div>
+    <div id="tablespace" style="width:100%">
+    </div>
+    <div id="key" style="visibility:visible"></div>
+    <div id="ExchangeTab" style="margin-top:25px;visibility:hidden">
+        <div>
+            <table id="adtable" class="adtable">
+                <tbody>
+                    <tr class="firstrow">
+                        <td width="40%"><label class="textlabel" style="color:#C12427">Account Type</label></td>
+                        <td width="60%">
+                            <input type="text" class="input"  onfocus="this.blur()" style="color:gray" id="AccountType" />
+                        </td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td><label class="textlabel" style="color:#C12427">Exchange Datacenter</label></td>
+                        <td>
+                            <input type="text" class="input" onfocus="this.blur()" style="color:gray" id="DataCenter" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Database</label></td>
+                        <td>
+                            <select id="Database" class="downchosetoright" style="width:20%; margin-left:10px;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Email Address</label></td>
+                        <td>
+                            <input class="input" id="Emailname" type="text" onpropertychange="Exchange_change(this)" onfocus="Exchange_Gettextlen(this)" oninput="Exchange_change(this)" style="width:20%;">
+                            <label style="float:left;margin-left:0px;"></label>
+                            <select id="EmailDomian" class="downchosetoright" style="width:20%; margin-left:10px;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Display Name</label></td>
+                        <td>
+                            <input class="input" id="DisplayName" onpropertychange="Exchange_change(this)" onfocus="Exchange_Gettextlen(this)" oninput="Exchange_change(this)" type="text" style="width:30%;">
+                            <input  name="button2"  type="button" class="btn" value="Generate" style="margin-left:10px;float:left;visibility:hidden">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Linked Account</label></td>
+                        <td>
+                            <input id="LinkedAccountDomain" class="input"   onfocus="this.blur()"  style="width:20%; margin-left:10px;color:gray">
+                            <input class="input" id="LinkedAccountName" onfocus="this.blur()" type="text" style="width:20%;color:gray">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">SendAs Delegates</label></td>
+                        <td><input class="input" id="SendAsDelegates" onpropertychange="Exchange_change(this)" onfocus="Exchange_Gettextlen(this)" oninput="Exchange_change(this)" type="text" style="width:40%;margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">FMA Delegates</label></td>
+                        <td><input class="input" id="FMADelegates" onpropertychange="Exchange_change(this)" onfocus="Exchange_Gettextlen(this)" oninput="Exchange_change(this)" type="text" style="width:40%; margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel" style="color:#C12427">Emailbox quotas</label></td>
+                        <td>
+                            <select id="Emailboxquotas" class="downchosetoright" style="width:20%; margin-left:10px;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Blackberry enabled</label></td>
+                        <td><input id="BlackBerryEnabled"  type="checkbox" style="float:left;margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Enable IMAP</label></td>
+                        <td><input id="IMAPEnabled"  type="checkbox" style="float:left;margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Enable POP3</label></td>
+                        <td><input id="POP3Enabled" type="checkbox" style="float:left;margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Hide from OAB</label></td>
+                        <td><input id="HideFromOAB"  type="checkbox" style="float:left;margin-left:10px;"></td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">ActiveSync Policy</label></td>
+                        <td>
+                            <select id="ActiveSyncMailboxPolicys" class="downchosetoright" style="width:20%; margin-left:10px;"></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label class="textlabel">Restricted usage</label></td>
+                        <td><input id="RestrictedUsage" onclick="Restrictedusage()" type="checkbox" style="float:left;margin-left:10px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table id="adtable" class="adtable">
+                <tbody>
+                    <tr class="firstrow">
+                        <td width="40%"><label class="textlabel"> Senders allowed list</label></td>
+                        <td>
+                            <textarea name="MSG" cols="40" rows="4" style="margin-left:10px;float:left;width:30%"></textarea>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-top:25px">
+            <center>
+                <input id="modifybtn" type="submit" class="btn" value="Modify" style="width:100px" onclick="ExchangModfiy()">
+                <input id="canclebtn" type="submit" class="btn" value="Cancle" style="width:100px" disabled onclick="Exchange_Cancle()">
+            </center>
+        </div>
+    </div>
+
+</div>
+             
+
+
+
+
+
+

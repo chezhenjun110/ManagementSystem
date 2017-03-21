@@ -1,0 +1,191 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model GroupSearchViewModels
+@{
+    ViewBag.Title = "AuthorityManagement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="widget">
+    <div class="title">
+        <h4>Search/Modify</h4>
+
+    </div>
+
+    <div class="titlebar">Search/Modify </div>
+    <div id="message" style="color:red"></div>
+    <div>
+
+        <table id="adtable" class="adtable">
+            <tbody>
+
+                <tr class="firstrow">
+                    <td width="40%">
+                        <label class="textlabel">AD Name</label>
+                    </td>
+                    <td width="60%">
+                        @Html.DropDownList("domain", Model.domains, htmlAttributes: new { @class = "input" })
+                    </td>
+                </tr>
+
+
+                <tr class="secondrow">
+                    <td width="40%">
+                        <label class="textlabel">Search Keyword</label>
+                    </td>
+                    <td width="60%">
+                        <input id="searchkeyword" class="input" type="text">
+                       
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <center style="margin-top:25px">
+            <input  type="submit" class="btn" value="Search" style="text-align:center;" onclick="Group_authority()">
+            <input  type="reset" class="btn" value="Clear" style="text-align:center;">
+        </center>
+
+
+    </div>
+    <div id="tablespace">
+
+    </div>
+    <div id="MiddleMess" style="color:orange;font-size:18px;"></div>
+    <div class="widget">
+        <div id="groupname" class="widget-header"><h3>GroupName</h3></div>
+        <div class="widget-content">
+            <div class="main-content">
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <!-- SWITCH BUTTONS ETC -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3><i class="fa fa-edit"></i>Dashboard</h3>
+                            </div>
+                            <div class="widget-content">
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox1" type="checkbox">
+                                    <span>Activity and Log</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox2" type="checkbox">
+                                    <span>System Healthy</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <!-- SWITCH BUTTONS ETC -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3><i class="fa fa-edit"></i>User Management</h3>
+                            </div>
+                            <div class="widget-content">
+
+
+
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox3" type="checkbox">
+                                    <span>Report</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox4" type="checkbox">
+                                    <span>Search/Modify</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox5" type="checkbox">
+                                    <span>Create</span>
+                                </label>
+
+
+                            </div>
+                        </div>
+                    </div><div class="col-md-6">
+
+                        <!-- SWITCH BUTTONS ETC -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3><i class="fa fa-edit"></i>Computer Management</h3>
+                            </div>
+                            <div class="widget-content">
+<label class="fancy-checkbox">
+                                    <input  id="checkbox10" type="checkbox">
+                                    <span>Report</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox11" type="checkbox">
+                                    <span>Search/Modify</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox12" type="checkbox">
+                                    <span>Create</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div><div class="col-md-6">
+
+                        <!-- SWITCH BUTTONS ETC -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3><i class="fa fa-edit"></i>Groups Management</h3>
+                            </div>
+                            <div class="widget-content">
+                               
+
+
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox6" type="checkbox">
+                                    <span>Report</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox7" type="checkbox">
+                                    <span>Search/Modify</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox9" type="checkbox">
+                                    <span>Create</span>
+                                </label>
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox8" type="checkbox">
+                                    <span> AuthorityManagement</span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <!-- SWITCH BUTTONS ETC -->
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3><i class="fa fa-edit"></i>UC Management</h3>
+                            </div>
+                            <div class="widget-content">
+                          
+                                <label class="fancy-checkbox">
+                                    <input  id="checkbox13" type="checkbox">
+                                    <span>Exchange Disable/Enable</span>
+                                </label>
+                              
+                                <label class="fancy-checkbox">
+                                    <input id="checkboxdiff" type="checkbox">
+                                    <span>Enable Delete User/Computer/Group</span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+</div>
+    <center style="margin-top:25px">
+        <input  type="submit" class="btn" value="Save" style="text-align:center;" onclick="Save_authority()">
+        <input  type="submit" class="btn" value="Reset" style="text-align:center;" onclick="Reset">
+    </center>
+            <!-- /row -->
+        </div>
+

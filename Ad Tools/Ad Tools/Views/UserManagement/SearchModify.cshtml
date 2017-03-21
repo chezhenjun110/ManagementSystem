@@ -1,0 +1,400 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model  UserSearchModifyViewModel
+@{
+    ViewBag.Title = "SearchModify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="widget">
+    <div class="title">
+        <h4>Search/Modify</h4>
+    </div>
+    <div class="titlebar">Search/Modify <span id="ChoosedOu" style="visibility:hidden"></span></div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+    <div>
+      
+       <table id="adtable" class="adtable">
+                <tbody>
+
+                    <tr class="firstrow">
+                        <td width="40%">
+                            <label class="textlabel">AD Name</label>
+                        </td>
+                        <td width="60%">
+                          @Html.DropDownList("domain", Model.domains, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr class="secondrow">
+                        <td width="40%">
+                            <label class="textlabel">Search Field</label>
+                        </td>
+                        <td width="60%">
+                            @Html.DropDownList("searchfield", Model.searchfield, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%">
+                            <label class="textlabel">Search Criteria</label>
+                        </td>
+                        <td width="60%">
+                           @Html.DropDownList("searchcriteria", Model.searchcriteria, htmlAttributes: new { @class = "input" })                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%">
+                            <label class="textlabel">Search Keyword</label>
+                        </td>
+                        <td width="60%">
+                            <input class="input" type="text" id="searchkeyword" onpropertychange="searchbegin()" oninput="searchbegin()" onkeydown="User_entersearch()" />
+                         
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40%">
+                            <label class="textlabel">Search Type</label>
+                        </td>
+                        <td width="60%">
+                            @Html.DropDownList("searchtype", Model.searchtype, htmlAttributes: new { @class = "input" })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <center style="margin-top:25px">
+                
+                <input  type="submit" class="btn" value="Search" style="text-align:center;" onclick="Post()">
+                <input id="searchclear"  type="submit" class="btn" value="Clear" disabled style="text-align:center;" onclick="User_Clear()">
+            </center>
+    </div>
+   <div id="tablespace" style="width:100%">
+</div>
+    <div id="key" style="visibility:hidden"></div>
+    <div id="MiddleMess" style="color:orange;font-size:18px;"></div>
+        <div id="TabContent" class="widget-content" style="border-radius:10px;border: 1px solid #E0E0E0;background:#F2F5F7;margin-top:50px;visibility:hidden">
+     <div class="tab-content" style="padding-left:20px;padding-right:20px;">
+                <div class="tab-pane fade in active" id="fgcorp.fgad.fg.local">
+                    <div class="widget-content" style="border-radius:10px;border: 1px solid #E0E0E0;background:#F2F5F7">
+                        <ul class="nav nav-tabs nav-tabs-custom-colored tabbackground" role="tablist">
+                            <li class="active"> <a href="#General" role="tab" data-toggle="tab">General</a> </li>
+                            <li> <a href="#address" role="tab" data-toggle="tab">address</a> </li>
+                            <li> <a href="#Account" role="tab" data-toggle="tab">Account</a> </li>
+                            <li> <a href="#Profile" role="tab" data-toggle="tab">Profile</a> </li>
+                            <li> <a href="#Telephones" role="tab" data-toggle="tab">Telephones</a> </li>
+                            <li> <a href="#Organization" role="tab" data-toggle="tab">Organization</a> </li>
+                            <li> <a href="#Others" role="tab" data-toggle="tab">Others</a> </li>
+                            <li> <a href="#MemberOf" role="tab" data-toggle="tab">Member Of</a> </li>
+                            <li> <a href="#ResetPWD" role="tab" data-toggle="tab"> Reset PWD</a> </li>
+                            <li> <a href="#UcManagement" role="tab" data-toggle="tab"> UC Management</a> </li>
+                          
+                        </ul>
+                        <div class="tab-content" style="padding-left:20px;padding-right:20px;">
+                            <div class="tab-pane fade in active" id="General">
+                                <table id="adtable" class="adtable">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">UserId</label></td>
+                                            <td width="65%"><input class="input" type="text" id="UserId" style="color:gray" onfocus="this.blur()" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel">UserPrincipalName</label></td>
+                                            <td><input class="input" type="text" style="color:gray" id="UserPrincipalName"  onpropertychange="Userchange(this)"onfocus="Gettextlen(this)" oninput="Userchange(this)"/>
+                                            <span id="specialtag" style="float:left;margin-left:5px;"></span>
+                                                <select id="upnname" class="downchosetoright" style="width:30%; margin-left:10px;color:gray"></select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">First Name</label></td>
+                                            <td><input class="input" type="text" id="FirstName" onpropertychange="Userchange_firstname(this)"onfocus="Gettextlen(this)" oninput="Userchange_firstname(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Last Name</label></td>
+                                            <td><input class="input" type="text" id="LastName" onpropertychange="Userchange_lastname(this)" onfocus="Gettextlen(this)" oninput="Userchange_lastname(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Display Name</label></td>
+                                            <td><input class="input" type="text" id="DisplayName" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Description</label></td>
+                                            <td><input class="input" type="text" id="Description" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Office</label></td>
+                                            <td><input class="input" type="text" id="Office" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Telephone</label></td>
+                                            <td><input class="input" type="text" id="Telephone" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Mail</label></td>
+                                            <td><input class="input" type="text" id="mail" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">OU</label></td>
+                                            <td><div style="width:50%;margin-left:10px;"><input id="combotree" style="width:100%"></div></td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="address">
+                                <table id="adtable" class="adtable">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Address</label></td>
+                                            <td width="65%"><input class="input" type="text" id="Address" onfocus="Gettextlen(this)" onpropertychange="Userchange(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel">P.O.Box</label></td>
+                                            <td><input class="input" type="text" id="PostOfficeBox" onfocus="Gettextlen(this)" onpropertychange="Userchange(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">City</label></td>
+                                            <td><input class="input" type="text" id="City" onfocus="Gettextlen(this)" onpropertychange="Userchange(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">ZIP/PostalCode</label></td>
+                                            <td><input class="input" type="text" id="PostalCode" onfocus="Gettextlen(this)" onpropertychange="Userchange(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">State/Province</label></td>
+                                            <td><input class="input" type="text" id="Province" onfocus="Gettextlen(this)" onpropertychange="Userchange(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="Account">
+                                <div id="AccountMess" style="color:orange;font-size:18px;"></div>
+                                <table id="table" class="table">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Lock State</label></td>
+                                            <td width="65%">
+
+                                                <input id="UnlockAccount" type="radio" onclick="UnlockAccount()" disabled style="float:left;margin-left:10px" />
+                                                <label id="AccountState" style="float:left;margin-left:10px;">Unlocked</label>
+                                            </td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label id="AccountAction" class="textlabel">Account State</label></td>
+                                            <td>
+                                                <input id="EnableAccount" type="radio" onclick="EnableAccount()"   name="Account" style="float:left;margin-left:10px" />
+                                                <label id="AccountEn" style="float:left;margin-left:10px;">Enable</label>
+                                                <input id="DisableAccount" type="radio" onclick="DisAccountConfirm()"   name="Account" style="float:left;margin-left:10px" />
+                                                <label id="AccountDis" style="float:left;margin-left:10px;">Disable</label>
+                                                <label style="float:left;margin-left:30px;color:orange">This Option will take  immediate effect</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Account Expires</label></td>
+                                            <td><input type="radio" id="AccountExpiresNever" name="AccountExpires" onfocus="Gettextlen(this)" onclick="AccountNever()" style="float:left;margin-left:10px" />
+                                                <label style="float:left;margin-left:10px;">Never</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="radio" id="AccountExpiresEndOf" name="AccountExpires" onfocus="Gettextlen(this)" onclick="AccountEndof()" style="float:left;margin-left:10px" />
+                                                <label style="float:left;margin-left:10px;">End of:</label>
+                                            <div  style="float:left;margin-left:10px;">
+                                                <input id="datebox" type="text" style="width:200px">
+                                            </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="Profile">
+                                <table id="table" class="table">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">User Profile</label></td>
+                                            <td width="65%"><label style="float:left;margin-left:10px;">Profile Path:</label>
+                                            <input class="input" type="text" id="profilePath" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel"></label></td>
+                                            <td><label style="float:left;margin-left:10px;">Login Script:</label>
+                                            <input class="input" type="text" id="LoginScript" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Home folder</label></td>
+                                            <td><input id="LocalPathRadio" type="radio" name="Homefolder" style="float:left;margin-left:10px" />
+                                            <label style="float:left;margin-left:10px;">Local Path:</label>
+                                            <input class="input" type="text" id="LocalPath" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel"></label></td>
+                                            <td><input id="ConnectRadio" type="radio" name="Homefolder" style="float:left;margin-left:10px" />
+                                            <label style="float:left;margin-left:10px;">Connect:</label>
+                                                @Html.DropDownList("Profileconnect", Model.Profile_connect, htmlAttributes: new { @class = "inputmini" })
+                                            <span style="float:left;margin-left:5px;">To:</span>
+                                            <input class="input" type="text" id="Connect" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="Telephones">
+                                <table id="table" class="table">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Pager</label></td>
+                                            <td width="65%"><input class="input" type="text" id="Pager" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel">Mobile phone</label></td>
+                                            <td><input class="input" type="text" id="MobilePhone" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="Organization">
+                                <table id="table" class="table">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Title</label></td>
+                                            <td width="65%"><input class="input" type="text" id="Title" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel">Department</label></td>
+                                            <td><input class="input" type="text" id="Department" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Company</label></td>
+                                            <td><input class="input" type="text" id="Company" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="Others">
+                                <table id="table" class="table">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Admin Description</label></td>
+                                            <td width="65%"><input class="input" type="text" id="adminDescription" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel">Admin Display Name</label></td>
+                                            <td><input class="input" type="text" id="admindisplayname" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label class="textlabel">Comments</label></td>
+                                            <td><input class="input" type="text" id="comment" onpropertychange="Userchange(this)" onfocus="Gettextlen(this)" oninput="Userchange(this)" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="MemberOf">
+                               <div id="membertable"></div>
+                                <div>
+                                       <table id="adtable" class="adtable">
+                                        <tbody>
+                                            <tr class="firstrow">
+                                                <td width="40%">
+                                                    <label class="textlabel">AD Name</label>
+                                                </td>
+                                                <td width="60%">
+                                                    @Html.DropDownList("groupdomain", Model.domains, htmlAttributes: new { @class = "input" })
+                                                </td>
+                                            </tr>
+                                                 <tr class="secondrow">
+                                                <td width="40%">
+                                                    <label class="textlabel">Search Keyword</label>
+                                                </td>
+                                                <td width="60%">
+                                                    <input type="text" class="input"  id="groupkeyword" onkeydown="User_Group_Search_begin()" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <center style="margin-top:25px">
+                                        <input type="submit" class="btn" value="Search" style="text-align:center;" onclick="User_Group_Search()">
+                                        <input id="searchclear" type="reset" class="btn" value="Clear" disabled style="text-align:center;" onclick="User_Group_Search()">
+                                    </center>
+                                   </div>
+                                <div id="Grouptablespace">
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="ResetPWD">
+                              
+                                <table id="adtable" class="adtable">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel" style="color:#C31013">New Password</label></td>
+                                            <td width="65%">
+                                            <label id="passmess" style="color:red;margin-left:10px;"></label>
+                                            <input class="input" id="password" type="text"  onfocus="clearPass()" />
+                                            <input  type="button" class="btn" onclick="RandomPass()" value="GENERATE" style="margin-left:5px;float:left"></td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td><label class="textlabel" style="color:#C31013">Confirm Password</label></td>
+                                            <td><label id="passwordremind" style="color:red;margin-left:10px;"></label>
+                                            <input class="input" id="confirmpassword" type="password"  onblur="confirmpassword()" onpropertychange="verify()" oninput="verify()" onfocus="clearremind()" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <center style="margin-top:25px">
+
+                                    <input id="changePassbtn" type="submit" class="btn" value="Change Password" disabled   onclick="User_ChangePass()">
+                                   
+                                </center>
+                            </div>
+                            <div class="tab-pane fade" id="UcManagement">
+                                <div id="UcMess" style="color:orange;font-size:18px;"></div>
+                                <table id="adtable" class="adtable">
+                                    <tbody>
+                                        <tr class="firstrow">
+                                            <td width="35%"><label class="textlabel">Lync  State</label></td>
+                                            <td width="65%">
+                                                <input id="EnableLync" type="radio" onclick="EnableLync()" name="Lync" style="float:left;margin-left:10px" />
+                                                <label id="LyncEn" style="float:left;margin-left:10px;">Enable</label>
+                                                <input id="DisableLync" type="radio" onclick="DisableLync_confirm()" name="Lync" style="float:left;margin-left:10px" />
+                                                <label id="LyncDis" style="float:left;margin-left:10px;">Disable</label>
+                                                <label  style="float:left;margin-left:30px;color:orange">This Option will take  immediate effect</label>
+                                            </td>
+                                        </tr>
+                                        <tr class="secondrow">
+                                            <td width="35%"><label class="textlabel">Exchange  State</label></td>
+                                            <td width="65%">
+                                            <input id="EnableExchange" type="radio"  onclick="EnableConfirm()" name="Exchange" style="float:left;margin-left:10px" />
+                                            <label id="ExchangeEn" style="float:left;margin-left:10px;">Enable</label>
+                                            <input id="DisableExchange" type="radio" onclick="DisableExchange_confirm()" name="Exchange" style="float:left;margin-left:10px" />
+                                            <label id="ExchangeDis" style="float:left;margin-left:10px;">Disable</label>
+                                            <label style="float:left;margin-left:30px;color:orange">This Option will take  immediate effect</label>
+                                            </td>
+                                        </tr>
+                                        <tr id="exchangeType" style="visibility:hidden">
+                                            <td width="35%"><label class="textlabel">Exchange Type</label></td>
+                                            <td width="65%">
+                                                <input id="Person" type="radio" checked name="Exchange1" style="float:left;margin-left:10px" />
+                                                <label id="Person" style="float:left;margin-left:10px;">Person</label>
+                                                <input id="Room" type="radio" name="Exchange1" style="float:left;margin-left:10px" />
+                                                <label id="Room" style="float:left;margin-left:10px;">Room</label>
+                                                <input id="Share" type="radio"  name="Exchange1" style="float:left;margin-left:10px" />
+                                                <label id="Share" style="float:left;margin-left:10px;">Share</label>
+                                                <input id="Equipment" type="radio"  name="Exchange1" style="float:left;margin-left:10px" />
+                                                <label id="Equipment" style="float:left;margin-left:10px;">Equipment</label>
+                                                <input id="modifybtn" type="submit" class="btn" value="OK" style="float:left;margin-left:10px;"  onclick="EnableExchange()">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+         
+                <center style="margin-top:25px">
+                    
+                    <input id="modifybtn1" type="submit" class="btn" value="Modify"  disabled onclick="User_Update_Confirm()">
+                    
+                    <input id="canclebtn" type="submit" class="btn" disabled value="Cancle" style="width:100px"  onclick="User_Detail_Cancle()">
+                    <input id="deletebtn" type="submit"  class="btn" value="Delete" disabled onclick="Delete_firm()">
+                </center>
+            </div>
+         </div>
+
+    </div>
+
+

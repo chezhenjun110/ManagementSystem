@@ -1,0 +1,50 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model ComputerCreateModels
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="widget">
+    <div class="title">
+        <h4>Create Computer</h4>
+
+    </div>
+
+    <div class="titlebar">Create Computer<span id="ChoosedOu" style="visibility:hidden"></span></div>
+    <div id="message" style="color:orange;font-size:18px;"></div>
+    <div>
+        <table id="adtable" class="adtable">
+            <tbody>
+                <tr class="firstrow">
+                    <td width="50%"><label class="textlabel" style="color:#C92023">AD Name</label></td>
+                    <td width="50%">
+                        @Html.DropDownList("Computerdomain", Model.domains, htmlAttributes: new { @class = "input" })
+                    </td>
+               </tr>
+                <tr class="secondrow">
+                    <td width="50%"><label class="textlabel" style="color:#C92023">OU</label></td>
+                    <td width="50%"><div style="width:50%;margin-left:10px;float:left"><input id="combotree" style="width:100%"></div></td>
+                </tr>
+                <tr >
+                    <td><label class="textlabel" style="color:#C92023">Computer Name</label></td>
+                    <td><input class="input"  id="computername" onpropertychange="Createchange()" oninput="Createchange()" type="text"></td>
+                </tr>
+               
+              
+                <tr>
+                    <td><label class="textlabel">Description</label></td>
+                    <td><input class="input" onpropertychange="Createchange()" oninput="Createchange()"  id="description" type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        <center style="margin-top:25px">
+            <input class="btn" type="submit"  value="Create" style="text-align:center;" onclick="Computer_create()">
+            <input id="Create_Cancle" class="btn" type="submit"  value="Clear" disabled style="text-align:center;"  onclick="Computer_Create_Cancle()">
+        </center>
+    </div>
+
+</div>
+
+

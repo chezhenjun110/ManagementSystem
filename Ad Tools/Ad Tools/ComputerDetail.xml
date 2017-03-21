@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADComputerDetail>
+  <computer Name="fffffffff">
+    <CreateBy>czj</CreateBy>
+    <CreateTime>20161012</CreateTime>
+    <LatestLogin>
+    </LatestLogin>
+  </computer>
+  <computer Name="test789">
+    <CreateBy>czj</CreateBy>
+    <CreateTime>20161012</CreateTime>
+  </computer>
+</ADComputerDetail>

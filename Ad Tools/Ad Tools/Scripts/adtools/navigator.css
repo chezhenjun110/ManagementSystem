@@ -1,0 +1,203 @@
+﻿@charset "utf-8";
+/* CSS Document */
+div>div>div>div>nav>ul>li>a.js-sub-menu-toggle{
+	background-color:#D7EBF9;
+	border-radius:7px;
+}
+div>div>div>div>nav>ul>li>ul>li>a.js-sub-menu-toggle{/* 新加 */
+	background-color:#D7EBF9;
+	border-radius:7px;
+}
+div>div>div>div>nav{
+	margin-top:80px;
+
+}
+div>div>div>div.imglogo{
+    margin-left:30px;
+}
+@media screen and (max-width: 768px) {
+div>div>div>div h2 {
+    display: block;
+    border-right: none;
+  }
+}
+    div > div > div > div h2 {
+        display: -moz-inline-stack;
+        display: inline-block;
+        vertical-align: middle;
+        *vertical-align: auto;
+        zoom: 1;
+        *display: inline;
+        border-right: 1px solid #ccc;
+        margin: 0;
+        padding-right: 10px;
+        margin-right: 10px;
+    }
+   
+div>div.widget{
+	margin-left: 30px;
+	margin-right: 30px;
+	color: #0D0C0C;
+}
+.bar {
+	border-radius:5px;
+	background-color: #34ACBB;
+   
+}
+
+div>div.widget {
+	margin-left: 30px;
+	margin-right: 30px;
+    background-color:#FFFFFF;
+    border:0px;
+
+}
+.title{
+	color:#66D2E4;
+}
+
+
+#inputspace {
+	float: left;
+	margin-right: -3px;
+	padding: 3px;
+	vertical-align: middle;
+	width: 250px;
+	padding-right: 0px;
+}
+
+.btn{
+  color:#ffffff;
+  background-color:#6299c2;
+  font-weight:bold;
+}
+
+
+div>div.widget {
+	margin-left: 30px;
+	margin-right: 30px;
+	background-color: #FFFFFF;
+}
+.title{          /*内容页title的样式*/
+	font-weight: bold;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #4E6B92;
+	margin-left: 15px;
+}
+.titlebar h5{         /*内容页带框title内字体的样式*/
+	font-weight:bold;
+	
+	color:#2E80B3;
+}
+
+
+/* 表格第二行的背景颜色*/
+#table2  tr.secondrow {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#F9FAFB,endColorStr=#F2F5F7); /*IE 6 7 8*/
+	background: -ms-linear-gradient(top, #F9FAFB,  #F2F5F7);        /* IE 10 */
+	background: -moz-linear-gradient(top,#F9FAFB,#F2F5F7);/*火狐*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#F9FAFB), to(#F2F5F7));/*谷歌*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9FAFB), to(#F2F5F7));      /* Safari 4-5, Chrome 1-9*/
+	background: -webkit-linear-gradient(top, #F9FAFB, #F2F5F7);   /*Safari5.1 Chrome 10+*/
+	background: -o-linear-gradient(top, #F9FAFB, #F2F5F7);  /*Opera 11.10+*/
+	font-weight: bold;
+	
+}
+#table {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 100%;
+	
+	margin-top:5px;
+	border-collapse: collapse;
+}
+#table td{
+	font-size: 1em;
+	text-align: right;
+	height:30px;
+	border: 2px solid #E0E0E0;
+	padding: 3px 7px 2px 7px;
+}
+/*表格第一行的背景颜色*/
+#table  tr.firstrow {
+	background-color: #F9FAFB;
+	font-weight: bold;
+	
+}
+/* 表格第二行的背景颜色*/
+#table  tr.secondrow {
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#F9FAFB,endColorStr=#F2F5F7); /*IE 6 7 8*/
+	background: -ms-linear-gradient(top, #F9FAFB,  #F2F5F7);        /* IE 10 */
+	background: -moz-linear-gradient(top,#F9FAFB,#F2F5F7);/*火狐*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%,from(#F9FAFB), to(#F2F5F7));/*谷歌*/
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9FAFB), to(#F2F5F7));      /* Safari 4-5, Chrome 1-9*/
+	background: -webkit-linear-gradient(top, #F9FAFB, #F2F5F7);   /*Safari5.1 Chrome 10+*/
+	background: -o-linear-gradient(top, #F9FAFB, #F2F5F7);  /*Opera 11.10+*/
+	font-weight: bold;
+	
+}
+
+#inputspace {        /*输入框*/
+	border: 2px solid #B0D1EA;
+	float: left;
+	margin-left:10px;
+	vertical-align: middle;
+	width: 250px;
+	
+}
+.downchosetoleft{   /*在右边的下选框*/
+	width:250px;
+	border: 2px solid #B0D1EA;
+	margin-right:10px;
+}
+.downchosetoright {	  /*在右边的下选框*/
+	border: 2px solid #B0D1EA;
+	float: left;
+	margin-left:10px;
+	width: 250px;
+	
+}
+
+.remind{      /*底部提示*/
+	
+	margin-top:100px;
+	font-weight:bold;
+	margin-bottom:30px;
+}
+
+.dropdownbox1{
+	margin-left:50px;
+	float:left;
+	width:150px;
+}
+.remindbar{
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=#EFF6FB,endColorStr=#DEEDF7); /*IE 6 7 8*/ 
+
+background: -ms-linear-gradient(top, #EFF6FB,  #DEEDF7);        /* IE 10 */
+
+background:-moz-linear-gradient(top,#EFF6FB,#DEEDF7);/*火狐*/ 
+
+background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#EFF6FB), to(#DEEDF7));/*谷歌*/ 
+
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EFF6FB), to(#DEEDF7));      /* Safari 4-5, Chrome 1-9*/
+
+background: -webkit-linear-gradient(top, #EFF6FB, #DEEDF7);   /*Safari5.1 Chrome 10+*/
+
+background: -o-linear-gradient(top, #EFF6FB, #DEEDF7);  /*Opera 11.10+*/
+	
+}
+
+
+.btn{
+ color:#ffffff;
+  background-color:#6299c2;
+  font-weight:bold;
+
+}
+.label{
+	font-weight:bold;
+   color: #000000;
+
+}
+#example thead{
+    background-color:#F2F5F7;
+}

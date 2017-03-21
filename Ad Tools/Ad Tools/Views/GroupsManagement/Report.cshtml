@@ -1,0 +1,47 @@
+﻿@using Ad_Tools.Models
+@using ADTOOLS.DTO
+@model GroupDetailModel
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+
+    <div class="widget">
+        <div class="title">
+            <h3> Group Report </h3>
+        </div>
+
+        <div id="tablespace" style="margin-top:25px;">
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>group</th>
+                        <th>CreateTime</th>
+                        <th>CreateBy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.groupdetail)
+                    {
+                        <tr>
+                            <td>@item.id</td>
+                            <td>@item.name</td>
+                            <td>@item.CreateTime</td>
+                            <td>@item.Createby</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
